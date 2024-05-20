@@ -168,7 +168,7 @@ function Outline({ outline }) {
     const [showOutlineOnXl, setShowOutlineOnXl] = useState(false);
 
     return <div>
-        <label className="btn btn-circle btn-sm swap swap-rotate xl:hidden  fixed right-0 top-1/3 z-50 p-4 opacity-75 " >
+        <label className="btn btn-circle btn-sm swap swap-rotate xl:hidden  fixed right-0 top-1/3 z-50 p-4 opacity-75 invisible" >
 
             {/* this hidden checkbox controls the state */}
             <input type="checkbox" onChange={(e) => {
