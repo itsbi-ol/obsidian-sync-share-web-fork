@@ -45,7 +45,7 @@ const themeIcons = {
             <MoonIcon className="w-5 h-5 text-base mr-1"></MoonIcon>
         </>
     ),
-    system: (
+    auto: (
         <>
             <SystemIcon className="w-5 h-5 text-base mr-1"></SystemIcon>
         </>
@@ -111,7 +111,7 @@ export default function Header() {
                         <span className="hidden sm:inline">GITHUB</span>
                     </a>
                     <div className="dropdown dropdown-end">
-                        <label tabIndex="0" className="btn btn-ghost rounded-btn ">
+                        <label tabIndex="0" className="btn btn-ghost rounded-btn">
                             {themeIcons[userSelectedTheme]}
                             <span className="hidden sm:inline">{userSelectedTheme}</span>
                         </label>
@@ -138,12 +138,12 @@ export default function Header() {
                             </li>
                             <li>
                                 <a
-                                    className={userSelectedTheme == "system" ? " active " : ""}
+                                    className={userSelectedTheme == "auto" ? " active " : ""}
                                     onClick={() => {
-                                        setUserSelectedTheme("system");
+                                        setUserSelectedTheme("auto");
                                     }}
                                 >
-                                    {themeIcons["system"]}System
+                                    {themeIcons["auto"]}Auto
                                 </a>
                             </li>
                         </ul>
