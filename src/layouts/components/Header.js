@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { serverSourceCodeUrl, serverVersion } from "../../../github";
+import { serverSourceCodeUrl, containerRegistryUrl, serverVersion } from "../../../github";
 import { useThemeStore } from "@/store/theme";
 import { shallow } from "zustand/shallow";
 
@@ -99,7 +99,7 @@ export default function Header() {
             <div className="flex-1">
                 <div className="indicator ">
                     <span className={`indicator-item badge badge-warning top-2 ${isLatestVersion ? "hidden" : ""}`}>new</span>
-                    <a href="https://hub.docker.com/r/alterzz/obsidian-sync-share-server/tags" target="_blank" className="btn btn-ghost normal-case text-xl">Notes Share</a>
+                    <a href={containerRegistryUrl} target="_blank" className="btn normal-case text-xl peer hover:bg-transparent">Notes Share</a>
                 </div>
             </div>
             <div className="flex justify-end flex-1 px-2">
