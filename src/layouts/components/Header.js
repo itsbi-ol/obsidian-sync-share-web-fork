@@ -60,38 +60,38 @@ export default function Header() {
 
     const [isLatestVersion, setIsLatestVersion] = useState(true);
 
-    useEffect(() => {
-        try {
-            (async () => {
+    // useEffect(() => {
+    //     try {
+    //         (async () => {
 
-                // 从 share.alter.run 获取版本信息
-                const res = await fetch("https://share.alter.run/api/user/getNewVersion");
-                const json = await res.json();
+    //             // 从 share.alter.run 获取版本信息
+    //             const res = await fetch("https://share.alter.run/api/user/getNewVersion");
+    //             const json = await res.json();
 
-                const { version } = json;
-                if (serverVersion === version) {
-                    // console.info("Currently the latest version")
-                } else {
-                    // console.info("Currently not the latest version")
-                    setIsLatestVersion(false);
-                }
+    //             const { version } = json;
+    //             if (serverVersion === version) {
+    //                 // console.info("Currently the latest version")
+    //             } else {
+    //                 // console.info("Currently not the latest version")
+    //                 setIsLatestVersion(false);
+    //             }
 
-                // 暂时不用后台查询方法,因为docker hub 被墙了
-                // const res = await fetch("/api/user/getNewVersion");
-                // const json = await res.json();
-                // const [letest, newVersion] = json.results;
-                // if (serverVersion.endsWith(letest.name) || serverVersion.endsWith(newVersion.name)) {
-                //     // console.info("Currently the latest version")
-                // } else {
-                //     // console.info("Currently not the latest version")
-                //     setIsLatestVersion(false);
-                // }
-            })()
-        } catch (e) {
-            console.error("getNewVersion error", e);
-        }
+    //             // 暂时不用后台查询方法,因为docker hub 被墙了
+    //             // const res = await fetch("/api/user/getNewVersion");
+    //             // const json = await res.json();
+    //             // const [letest, newVersion] = json.results;
+    //             // if (serverVersion.endsWith(letest.name) || serverVersion.endsWith(newVersion.name)) {
+    //             //     // console.info("Currently the latest version")
+    //             // } else {
+    //             //     // console.info("Currently not the latest version")
+    //             //     setIsLatestVersion(false);
+    //             // }
+    //         })()
+    //     } catch (e) {
+    //         console.error("getNewVersion error", e);
+    //     }
 
-    }, [])
+    // }, [])
 
     const position = getParam('headerPosition'); // sticky static
     return (
