@@ -99,6 +99,7 @@ export default function Header() {
             <div className="flex-1">
                 <div className="indicator ">
                     <span className={`indicator-item badge badge-warning top-2 ${isLatestVersion ? "hidden" : ""}`}>new</span>
+                    <img src="/static/logo.png" className="ml-2 w-12 h-12 rounded-xl" />
                     <a href={containerRegistryUrl} target="_blank" className="btn normal-case text-xl peer hover:bg-transparent">Notes Share</a>
                 </div>
             </div>
