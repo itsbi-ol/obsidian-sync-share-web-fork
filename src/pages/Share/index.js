@@ -87,10 +87,10 @@ function createMenuItem(tree) {
             setTimeout(() => {
                 location.href = href;
                 const classList = document.querySelector(href).classList
-                classList.add("bg-yellow-400");
+                classList.add("bg-violet-600");
                 classList.add("transition-all");
                 setTimeout(() => {
-                    classList.remove("bg-yellow-400");
+                    classList.remove("bg-violet-600");
                     classList.remove("transition-all")
                 }, 1200);
             }, 0)
