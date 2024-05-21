@@ -94,6 +94,8 @@ export default function Header() {
     // }, [])
 
     const position = getParam('headerPosition'); // sticky static
+    const [themeSelectorOpen, setThemeSelectorOpen] = useState(false);
+
     return (
         <div className={"navbar bg-base-200 top-0 z-50 " + position}>
             <div className="flex-1">
@@ -112,42 +114,47 @@ export default function Header() {
                         <span className="hidden sm:inline">GITHUB</span>
                     </a>
                     <div className="dropdown dropdown-end">
-                        <label tabIndex="0" className="btn btn-ghost rounded-btn">
+                        <label tabIndex="0" className="btn btn-ghost rounded-btn" onClick={() => { setThemeSelectorOpen(prevState => !prevState); }}>
                             {themeIcons[userSelectedTheme]}
                             <span className="hidden sm:inline">{userSelectedTheme}</span>
                         </label>
-                        <ul tabIndex="0" className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4 z-50">
-                            <li>
-                                <a
-                                    className={userSelectedTheme == "light" ? " active " : ""}
-                                    onClick={() => {
-                                        setUserSelectedTheme("light");
-                                    }}
-                                >
-                                    {themeIcons["light"]}Light
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    className={userSelectedTheme == "dark" ? " active" : ""}
-                                    onClick={() => {
-                                        setUserSelectedTheme("dark");
-                                    }}
-                                >
-                                    {themeIcons["dark"]}Dark
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    className={userSelectedTheme == "auto" ? " active " : ""}
-                                    onClick={() => {
-                                        setUserSelectedTheme("auto");
-                                    }}
-                                >
-                                    {themeIcons["auto"]}Auto
-                                </a>
-                            </li>
-                        </ul>
+                        {themeSelectorOpen && (
+                            <ul tabIndex="0" className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4 z-50">
+                                <li>
+                                    <a
+                                        className={userSelectedTheme == "light" ? " active " : ""}
+                                        onClick={() => {
+                                            setUserSelectedTheme("light");
+                                            setThemeSelectorOpen(false);
+                                        }}
+                                    >
+                                        {themeIcons["light"]}Light
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className={userSelectedTheme == "dark" ? " active" : ""}
+                                        onClick={() => {
+                                            setUserSelectedTheme("dark");
+                                            setThemeSelectorOpen(false);
+                                        }}
+                                    >
+                                        {themeIcons["dark"]}Dark
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className={userSelectedTheme == "auto" ? " active " : ""}
+                                        onClick={() => {
+                                            setUserSelectedTheme("auto");
+                                            setThemeSelectorOpen(false);
+                                        }}
+                                    >
+                                        {themeIcons["auto"]}Auto
+                                    </a>
+                                </li>
+                            </ul>
+                        )}
                     </div>
                 </div>
             </div>
