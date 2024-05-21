@@ -219,8 +219,12 @@ export default function Share() {
         (async () => {
             const [title, content] = await getNoteContent(username, shareLinkId, link);
             setNoteContent(content);
-            setTitle(title);
-            document.title = title;
+            if (title != "null") {
+                setTitle(title);
+                document.title = title;
+            } else {
+                document.title = "Obsidian Share";
+            }
         })();
     }, [username, shareLinkId, link]);
 
