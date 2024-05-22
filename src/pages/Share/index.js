@@ -222,8 +222,6 @@ export default function Share() {
             if (title != "null") {
                 setTitle(title);
                 document.title = title;
-            } else {
-                document.title = "Obsidian Share";
             }
         })();
     }, [username, shareLinkId, link]);
