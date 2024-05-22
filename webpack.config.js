@@ -118,7 +118,10 @@ module.exports = (env, argv) => {
                 "process.env.MOCK": true, // mock 数据开关 ,不使用的时候设置为false
             }),
             new CopyPlugin({
-                patterns: [{ from: "static", to: "static" }],
+                patterns: [
+                    { from: "static", to: "static" },
+                    { from: "robots.txt", to: "robots.txt" }
+                ],
             }),
             new CleanWebpackPlugin(),
         ],
