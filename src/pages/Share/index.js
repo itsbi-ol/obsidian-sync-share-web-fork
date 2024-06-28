@@ -87,10 +87,10 @@ function createMenuItem(tree) {
             setTimeout(() => {
                 location.href = href;
                 const classList = document.querySelector(href).classList
-                classList.add("bg-yellow-400");
+                classList.add("bg-violet-600");
                 classList.add("transition-all");
                 setTimeout(() => {
-                    classList.remove("bg-yellow-400");
+                    classList.remove("bg-violet-600");
                     classList.remove("transition-all")
                 }, 1200);
             }, 0)
@@ -219,8 +219,10 @@ export default function Share() {
         (async () => {
             const [title, content] = await getNoteContent(username, shareLinkId, link);
             setNoteContent(content);
-            setTitle(title);
-            document.title = title;
+            if (title != "null") {
+                setTitle(title);
+                document.title = title;
+            }
         })();
     }, [username, shareLinkId, link]);
 
@@ -436,6 +438,8 @@ export default function Share() {
     }, [noteContent, isDark, rehypePlugins])
 
 
+    const [isTitleRendered, setIsTitleRendered] = useState(false);
+
     useEffect(() => {
         if (noteContent && window.location.hash) {
             setTimeout(() => {
@@ -444,15 +448,20 @@ export default function Share() {
                     element.scrollIntoView({ behavior: 'smooth' });
                 }
             }, 200)
+        };
+        if (title) {
+            setIsTitleRendered(true);
         }
-    }, [noteContent]);
+
+    }, [noteContent, title]);
 
 
     return (
 
         <div className={"mx-auto max-w-screen-md pt-6 px-2 min-h-screen scroll-pt-16"}>
             <Outline outline={outline}></Outline>
-            <h1 className="text-4xl font-bold mb-4">{title}</h1>
+            <h1 className="text-5xl font-black mb-4">{title}</h1>
+            {isTitleRendered && <div class="flex-grow border-t border-gray-500"></div>}
             {markdown}
         </div>
     );

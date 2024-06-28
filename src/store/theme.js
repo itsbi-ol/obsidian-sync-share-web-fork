@@ -5,7 +5,7 @@ import { shallow } from "zustand/shallow";
 // 系统选择主题
 const media = window.matchMedia("(prefers-color-scheme:dark)");
 const systemDefaultSelectedTheme = media.matches ? "dark" : "light";
-const userDefaultSelectedTheme = "system";
+const userDefaultSelectedTheme = "auto";
 
 // document.documentElement.setAttribute("data-theme", systemDefaultSelectedTheme);
 
@@ -24,7 +24,7 @@ media.onchange = (m) => {
 
 // 计算应该使用的主题
 const calculateUsedTheme = (systemSelectedTheme, userSelectedTheme) => {
-    if (userSelectedTheme == "system") {
+    if (userSelectedTheme == "auto") {
         return systemSelectedTheme;
     } else {
         return userSelectedTheme;
